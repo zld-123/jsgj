@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_创建类和对象</title>
+</head>
+<body>
+<!--
+总结：
+1，通过Class 关键字创建的类，类名建议使用首字母大写的形式
+2，类里面有个 constructor 函数，可以接受传递过来的参数，同事返回实例对象
+3，constructor 函数只要new生成实例是，就会自动调用这个函数，如果我们不写这个函数，类也会自动生成这个函数
+4，生成实例new不能省略
+5，最后注意语法规范，创建类 类名后面不要家小括号，生成实例，类名后面家小括号，构造函数不需要家function
+
+
+-->
+<script>
+  //1，创建类 class 创建一个明星类
+  class Star {
+      //constructor 构造函数，可以将 new创建的对象放到类里面
+      constructor(uname) {
+          this.uname = uname
+
+      }
+  }
+  //2，利用类创建对象 需要用到 new
+  var ldh = new Star('刘德华')
+  console.log(ldh.uname)
+</script>
+</body>
+</html>

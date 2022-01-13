@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_类中添加方法</title>
+</head>
+<body>
+<script>
+  //1,理由Class创建类
+  class Star {
+      constructor(uname,age) {
+          this.uname = uname
+          this.age = age
+      }
+      //1,类里面所有的函数都是不需要写 function 的
+      //2，再类里面多个函数方法之间不需要添加逗号作为分隔符
+      sty(song){
+          console.log(this.uname + song)
+      }
+  }
+  //2，利用类创建对象 new
+  var ldh = new Star('刘德华',18)
+  var zxy = new Star('张学友',19)
+  console.log(ldh)
+  console.log(zxy)
+  ldh.sty('冰雨')
+  zxy.sty('李香兰')
+</script>
+</body>
+</html>

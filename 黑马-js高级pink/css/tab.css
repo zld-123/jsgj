@@ -1,0 +1,92 @@
+main{
+    position: relative;
+    top: 50px;
+    left: 50%;
+    margin-left: -30%;
+    height: 400px;
+    width: 800px;
+}
+
+li{
+    float: left;
+    list-style: none;
+}
+main h4{
+    text-align: center;
+}
+.fisrstnav{
+    position: absolute;
+    top: 60px;
+    left: -1px;
+    height: 45px;
+    width: 100%;
+    border: 1px solid orange;
+
+}
+.liactive{
+    background-color: pink;
+    border-bottom: 0;
+}
+.fisrstnav ul{
+    padding: 0;
+}
+.fisrstnav ul li{
+    position: relative;
+    top: -17px;
+    left: -1px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    width: 80px;
+    border: 1px solid coral;
+    border-bottom: 0;
+}
+.fisrstnav ul li p{
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    height: 12px;
+    line-height: 1;
+    width: 12px;
+    margin: 0;
+    font-size: 1px;
+    color: white;
+    background-color: black;
+    border-radius:0 0 0 50px;
+}
+.tabadd{
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    text-align: center;
+    height: 12px;
+    width: 12px;
+    border: 1px solid black;
+
+}
+.tabadd span{
+    position: absolute;
+    top: -5px;
+    right: 0px;
+}
+.tabscon{
+    position: absolute;
+    top: 106px;
+    left: -1px;
+    height: 313px;
+    width: 100%;
+    border: 1px solid orange;
+    border-top: 0;
+}
+.tabscon .conactive{
+    display: block;
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    height: 45px;
+    width: 90px;
+}
+section{
+    display: none;
+}
+
