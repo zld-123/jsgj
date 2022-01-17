@@ -23,6 +23,10 @@ main h4{
     border: 1px solid orange;
 
 }
+input{
+    height: 25px;
+    width: 60px;
+}
 .liactive{
     background-color: pink;
     border-bottom: 0;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10_借用父构造函数继承属性</title>
+</head>
+<body>
+<script>
+<!--   借用父构造函数继承属性 -->
+//1,父构造函数
+function Father(uname,age) {
+    //this 指向父构造函数的对象实例
+    this.uname = uname
+    this.age = age
+}
+//在父亲的原型身上添加一个方法
+Father.prototype.mondy = function () {
+    console.log('这次小挣了一个亿')
+}
+//子构造函数
+function Song(uname,age) {
+    //this 指向子构造函数的对象实例
+    Father.call(this,uname,age)
+}
+//将孩子的原型对象 等于 父原型对象，达到继承的效果，但是有缺陷，如果孩子在添加自己独有的，那父亲也会跟着拥有
+// Song.prototype = Father.prototype//可以达到继承的效果，但是缺点就是，如果子原型对象修改了，父原型对象也会跟着修改
+//创建一个子构造函数独 有的
+Song.prototype = new Father()//通过new Father() 创建一个新的原型指向父原型对象，因为是新开辟的所以就算在改变子原型对象
+//父原型对象也不会跟着改变，但是还是有个缺陷，就是子原型对象的this就会变成指向父原型，所以最后还需要改变一个子原型对象的指向
+Song.prototype.constructor = Song;//通过 constructor 将指向父原型对象的this指向改回指向子原型对象
+Song.prototype.exam = function () {
+    console.log('为啥我还要考试')
+}
+var ldh = new Song('刘德华',18)
+console.log(ldh)
+console.log(Father.prototype)
+console.log(Song.prototype.constructor)
+</script>
+</body>
+</html>

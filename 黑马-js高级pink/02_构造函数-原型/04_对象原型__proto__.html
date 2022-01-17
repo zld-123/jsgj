@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04对象原型__proto__</title>
+</head>
+<body>
+<!--
+constructor 构造函数
+ 对象原型（__proto__）和构造函数（prototype）原型对象里面都有一个属性 constructor ，我们称为
+ 构造函数，因为他指回构造函数本身
+ constructor 主要用于记录该对象引用于那个构造函数，他可以让原型对象程序指向原来的构造函数
+
+
+-->
+<script>
+    function Star(uname, age) {
+        this.uname = uname
+        this.age = age
+    }
+    //正常写函数 constructor 指向的是构造函数本身
+    // Star.prototype.sing = function () {
+    //     console.log('我他么会唱歌')
+    // }
+    // Star.prototype.movie = function () {
+    //     console.log('我他么会演戏')
+    // }
+    //将公共函数包装到一个对象里面 这时候指向的就是对象了
+    Star.prototype = {
+        //如果我们修改了原来的原型对象，给原型对象赋值的是一个对象，则必须手动的利用 constructor 指回原来的构造函数
+        constructor:Star,
+        sing:function () {
+            console.log('我他么会唱歌')
+        },
+        movie:function () {
+            console.log('我他么会演戏')
+        }
+    }
+    var ldh = new Star('刘德华', 18)
+    var zxy = new Star('张学友', 19)
+    console.log(Star.prototype)
+    console.log(ldh.__proto__)
+    console.log(Star.prototype.constructor)
+    console.log(ldh.__proto__.constructor)
+</script>
+</body>
+</html>

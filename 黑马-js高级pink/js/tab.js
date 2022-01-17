@@ -26,8 +26,10 @@ window.addEventListener('load', function () {
                 // this.lis[i].children[1].onclick = this.removeTab;
                 //删除功能
                 this.remove[i].onclick = this.removeTab
-                //双击编辑功能
+                //双击编辑导航功能
                 this.spans[i].ondblclick = this.editTab
+                //双击编辑主体功能
+                this.sections[i].ondblclick = this.editTab
             }
         }
 
@@ -91,10 +93,27 @@ window.addEventListener('load', function () {
 
 //    4，修改功能
         editTab() {
+            //获取原先li里面的文字
+            var str = this.innerHTML;
             // 双击禁止选中文字
             window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
             // alert('我草')
             this.innerHTML = '<input type="text"/>'
+        //    将获取到的内容赋给文本框
+            var input = this.children[0]
+            input.value = str
+            input.select()//文本框内容默认处于选中状态
+        //    当我们离开文本框就需要把文本框内容给span
+            input.onblur = function () {
+                this.parentNode.innerHTML = this.value
+            }
+        //    当我们按下回车键也可以吧文本框值给span
+            input.onkeyup = function (e) {
+                if (e.keyCode === 13){
+                    //函数里面的实例 event 有一个 keyCode 可以监听用户按下的是哪个按键
+                    this.blur()//手动调用表单失去焦点事件，不需要鼠标离开操作，
+                }
+            }
         }
     }
 

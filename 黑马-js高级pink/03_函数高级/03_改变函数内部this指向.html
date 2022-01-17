@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03_改变函数内this指向</title>
+</head>
+<body>
+<script>
+    <!--    改变函数内this指向 js提供了3中方法 call() apply() bind()-->
+    //1，call(o,a,b) o:代表this将要指向的地方 a,b：代表传递的参数
+    var o = {
+        name: 'andy'
+    }
+
+    function fn(a, b) {
+        console.log(this)
+        console.log(a + b)
+    }
+    fn.call(o, 2, 5)
+    //call() 第一个作用：可以调用函数；第二个作用：可以改变函数内的this指向
+    //call() 的主要作用可以实现继承
+    function Father(uname,age,sex) {
+        this.uname = uname
+        this.age = age
+        this.sex = sex
+    }
+    function Son(uname,age,sex) {
+        Father.call(this,uname,age,sex)
+    }
+    var ldh = new Son('刘德华',18,'男')
+    console.log(ldh)
+</script>
+</body>
+</html>

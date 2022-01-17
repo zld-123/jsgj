@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13_trim方法去除两端空格</title>
+</head>
+<body>
+<input type="text"> <button>提交</button>
+<div></div>
+<script>
+    // trim 方法去除字符串两端空格,但是在两个字符串之间的空格不会被去除
+    // var str = '   an dy    '
+    // console.log(str)
+    // var str1 = str.trim()
+    // console.log(str1)
+
+//    提交表单
+    var inp = document.querySelector('input')
+    var btn = document.querySelector('button')
+    var div = document.querySelector('div')
+    btn.onclick = function () {
+        div.innerHTML = ''
+        var str = inp.value.trim()
+        if (str === ''){
+            alert('我草，你干嘛不输入值')
+        }else {
+            console.log(str)
+            console.log(inp.value.length)
+            div.innerHTML = str
+        }
+    }
+</script>
+</body>
+</html>

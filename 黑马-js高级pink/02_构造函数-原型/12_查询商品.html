@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询商品</title>
+</head>
+<style>
+    .search{
+        margin-left: 50px;
+    }
+    table,td,tr{
+        border-collapse: collapse;
+        margin-top: 15px;
+        margin-left: 250px;
+    }
+    th{
+        width: 160px;
+    }
+</style>
+<body>
+<div class="search">
+  按照价格查询：<input type="text" class="start"> - <input type="text" class="end">
+    <button class="search-price">搜索</button> 按照商品名称查询：
+    <input type="text" class="product"> <button class="search-pro">查询</button>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>产品名称</th>
+        <th>价格</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script>
+    var data = [{
+        id:1,
+        pname:'小米',
+        price:3999
+    },{
+        id:2,
+        pname:'OPPO',
+        price:1999
+    },{
+        id:3,
+        pname:'荣耀',
+        price:1299
+    },{
+        id:4,
+        pname:'华为',
+        price:3999
+    },{
+        id:5,
+        pname:'小米',
+        price:2999
+    }]
+//    1,获取相应的元素
+    var tbody = document.querySelector('tbody')
+    var search_price = document.querySelector('.search-price')
+    var start = document.querySelector('.start')
+    var end = document.querySelector('.end')
+    var product = document.querySelector('.product')
+    var search_pro = document.querySelector('.search-pro')
+    //首次使用需要先调用一下函数
+    setData(data)
+    //多次使用渲染页面可以封装一个函数
+    function setData(myData) {
+        //先清空原来的tbody 里面的数据
+        tbody.innerHTML = ''
+        //2,打数据渲染到页面中
+        myData.forEach(function (value) {
+            //    进行遍历创建tr
+            var tr = document.createElement('tr')
+            tr.innerHTML = '<td>'+value.id+'</td><td>'+value.pname+'</td><td>'+value.price+'</td>'
+            tbody.appendChild(tr)
+        })
+    }
+//    3,根据价格查询商品
+//    当我们点击按钮，就可以根据商品价格去赛选数组里面的对象
+    search_price.addEventListener('click',function () {
+       var newData = data.filter(function (value) {
+            return value.price >= start.value && value.price <= end.value
+        })
+        //把筛选玩的，渲染到页面上
+        setData(newData)
+    })
+//    4,根据商品名称查询
+/*    方法一：用filter来查询
+    search_pro.addEventListener('click',function () {
+        var newDate = data.filter(function (value) {
+            return value.pname === product.value
+        })
+        //把筛选玩的，渲染到页面上
+        setData(newDate)
+    })
+        */
+
+        //方法二 用some查询
+    search_pro.addEventListener('click',function () {
+        var arr = []
+        // 如果查询数组当中的唯一元素，使用 some 方法更加合适一些，因为他找到这个元素，就不在继续循环了，这样更加高效
+        //因为他返回的是一个数组所以我们需要再定一个数组用来存放他
+        data.some(function (value) {
+            if (value.pname === product.value){
+                arr.push(value)
+                return true//这里必须要 return一个 true才可以
+            //    在some里面遇到 return true 就会终止遍历，迭代效率更高
+            }
+        })
+        //把筛选玩的，渲染到页面上
+        setData(arr)
+    })
+
+</script>
+</body>
+</html>

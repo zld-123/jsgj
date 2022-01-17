@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_原型</title>
+</head>
+<body>
+<script>
+    <!--    当我们在调用大函数时，相同的小函数缺也被调用了，所以就需要用到函数的原型-->
+    function Star(uname, age) {
+        this.uname = uname
+        this.age = age
+    }
+
+    Star.prototype.sing = function () {
+        console.log('我他么会唱歌')
+    }
+    var ldh = new Star('刘德华', 18)
+    var zxy = new Star('张学友', 19)
+    ldh.sing();
+    zxy.sing();
+//    2,一般情况下，我们的公共属性定义到构造函数里面，公共的方法放到原型上面
+</script>
+</body>
+</html>

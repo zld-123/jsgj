@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06_开启严格模式</title>
+</head>
+<body>
+<!--为整个脚本（script标签）开启严格模式-->
+<script>
+    'use strict'//在js第一行写上这个就可以按照严格模式执行代码
+//    (function(){'use strict'})() //也可以在最开始也一个自调用函数
+
+//    也可以给摸个函数开启严格模式
+    function fn() {
+        'use strict'//这样就只为这个函数开启了严格模式，其他的不会收到影响
+    }
+</script>
+</body>
+</html>

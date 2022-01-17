@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>15_ObjectdefineProperty方法</title>
+</head>
+<body>
+<script>
+    <!--  Object.defineProperty() 定义新属性或修改原有的属性-->
+    var obj = {
+        id: 1,
+        pname: '小米',
+        price: 1999
+    }
+//    原来添加或修改属性的方法
+//     obj.num = 1000;
+//     obj.price = 2000;
+//     console.log(obj)
+
+//    Object.defineProperty(obj,prop,descriptor) 三个参数都是必须的
+/*
+        obj：必须，目标对象
+*       prop：必须。需要定义或修改的属性名字
+*       descriptor：必须，目标属性所拥有的的特性,这个参数是说明 并以对象{}形式类书写
+        value:设置属性值，默认是 undefined
+        writable:值是否可以重写 true|false 默认是false
+        enumerable:目标属性是否可以被枚举，true|false 默认是false
+        configurable:目标属性是否可以被删除或是否可以再次修改特性 true|false 默认是false
+* */
+    Object.defineProperty(obj,'num', {
+        value:1000,
+        configurable:true
+    })
+    Object.defineProperty(obj,'pname',{
+        //writable:值是否可以重写
+        writable:true
+    })
+    Object.defineProperty(obj,'address',{
+        //enumerable:目标属性是否可以被枚举
+        value:'中国山东蓝翔绩效xx单元',
+        enumerable:true
+    })
+    obj.pname = '华为'
+    console.log(obj)
+    console.log(Object.keys(obj))
+    delete obj.num;
+    delete obj.pname
+    console.log(obj)
+</script>
+</body>
+</html>

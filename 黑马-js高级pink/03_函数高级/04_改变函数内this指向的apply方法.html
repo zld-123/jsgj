@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_改变函数内this指向的apply方法</title>
+</head>
+<body>
+<script>
+  // 改变函数内this指向 js 提供了三种方法 call() apply() bind()
+//  2.apply() 应用的意思
+  var o = {
+      name:'andy'
+  }
+  function fn(arr) {
+      console.log(this)//这里的this指向window
+      console.log(arr)
+  }
+  fn.apply(o,['张','磊'])
+//  1，apply() 第一个作用也是可以调用函数 第二个作用也可以改变函数内部的 this 指向
+//  2，但是他的参数必须是数组（伪数组）形式
+//  3，apply 的主要应用 比如可以利用 apply 借助于数学内置对象求最大值
+  var arr = [1,99,36,45,6,92,150]
+  var max = Math.max.apply(Math,arr)
+  var min = Math.min.apply(Math,arr)
+  console.log(max,min)
+</script>
+</body>
+</html>
