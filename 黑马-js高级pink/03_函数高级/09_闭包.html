@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09_闭包</title>
+</head>
+<body>
+<script>
+<!--  闭包（closure）指有权访问另一个函数作用域中变量的函数-->
+//简单理解就是，一个作用域可以访问另外一个函数内部的局部变量
+//fn外面的作用域可以访问fn内部的局部变量
+//闭包的主要作用：延伸了变量的作用范围
+function fn() {
+    var num = 10
+    function fun() {
+        console.log(num)
+    }
+    return  fun
+}
+var f = fn()//这里相当于var f = function fun() {console.log(num)}
+f()
+</script>
+</body>
+</html>

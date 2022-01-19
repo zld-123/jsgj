@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_显示原型与隐式原型</title>
+</head>
+<body>
+<!--
+1，每一个函数function都有一个prototype，即显示原型(属性)
+2，每一个实例对象都有一个__proto__，可称为隐式原型(属性)
+3，对象的隐式原型的值为其对应构造函数的显示原型的值
+4，内存结构
+5，总结：
+    * 函数的prototype属性：在定义函数是自动添加的，默认值是一个空的Object对象
+    * 对象的__proto__属性：创建对象是自动太黏的，默认为构造函数的prototype属性值
+    * 程序员能直接操作显示原型，但不能直接操作隐式原型（ES6之前）
+-->
+<script>
+<!--    定义构造函数-->
+    function Fun() {
+
+    }
+
+    //1，每一个函数function都有一个prototype，即显示原型(属性) ，默认值是一个空的Object对象
+    console.log(Fun.prototype)
+
+    //创建实例对象
+    var fun = new Fun()
+    //2，每一个实例对象都有一个__proto__，可称为隐式原型(属性)
+    console.log(fun.__proto__)
+    //3，对象的隐式原型的值为其对应构造函数的显示原型的值
+    console.log(Fun.prototype === fun.__proto__)//返回值 true
+
+    //给原型添加方法
+    Fun.prototype.test = function () {
+        console.log('test()')
+    }
+
+    //通过实例对象调用原型的方法
+    fun.test()
+</script>
+</body>
+</html>

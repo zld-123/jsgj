@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_面试题</title>
+</head>
+<body>
+<script>
+<!--    测试题1:(考察函数与变量的提升问题)：先执行变量提升，在执行函数提升-->
+function a() {}
+    var a
+    console.log(typeof a)//function
+//测试题2
+if (!(b in window)){
+    var b = 1
+}
+console.log(b)//undefined
+//测试3
+var c = 1
+function c(c) {
+    console.log(c)
+}
+c(2)//报错，因为经过变量和函数提升后，会有一个 c=1，导致c不在是一个函数
+</script>
+</body>
+</html>

@@ -7,8 +7,32 @@
 <body>
 <scripT>
     'use strict';
+    //1，在严格模式下，变量名必须先声明再使用
     var mun = 10
     console.log(mun)
+    //2，在严格模式下不能随意删除已经定义好的变量
+    // delete mun
+    // function fn() {
+    //     //3，在严格模式下的全局作用域中 this 不在指向 window
+    //     //而是变成 undefined
+    //     console.log(this)
+    // }
+    // fn()
+    //4，在严格模式下如果构造函数不加 new 调用 this 指向的是undefined 如果给他赋值则会报错
+    // function Star() {
+    //     this.sex = '男'
+    // }
+    // var sex = new Star()
+    // console.log(window.sex)
+    //5，定时器 this 还是指向 window
+    // setTimeout(function () {
+    //     console.log(this)
+    // },1000)
+    //6，严格模式下函数不能有重名的参数
+    // function fn(a,a) {
+    //     console.log(a + a)
+    // }
+    // fn(1,4)
 </scripT>
 </body>
 </html>

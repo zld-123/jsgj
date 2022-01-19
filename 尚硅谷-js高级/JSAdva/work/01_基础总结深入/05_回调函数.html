@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_回调函数</title>
+</head>
+<body>
+<!--
+1，什么函数才是回调函数
+    1），你定义的
+    2），你没有调用
+    3），但最终他执行了（在某个时刻或者某个条件下）
+2，常见的回调函数
+    * DOM事件回调函数--》的this发生事件的DOM元素
+    * 定时器回调函数--》this就是window
+    --------------（后面还有两个）
+    * Ajax请求回调函数
+    * 生命周期回调函数
+-->
+<button id="btn">测试点击函数</button>
+<script>
+    var btn = document.getElementById('btn')
+    btn.addEventListener('click',function () {//DOM事件回调函数
+        alert(this.innerText + ':我草')
+    })
+//    定时器 => 超时定时器(setTimeout)  循环定时器(setInterval)
+    setTimeout(function () {//定时器回调函数
+        alert(123)
+    },2000)
+</script>
+</body>
+</html>

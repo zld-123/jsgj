@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10_闭包应用 剪辑li输出索引号</title>
+</head>
+<body>
+<ul class="nav">
+    <li>榴莲</li>
+    <li>臭豆腐</li>
+    <li>鲱鱼罐头</li>
+    <li>大猪蹄子</li>
+</ul>
+<script>
+    <!--    闭包应用 点击li 输出当前的li的索引号-->
+    //1，获取元素
+    var lis = document.querySelector('.nav').querySelectorAll('li')
+    //定义一个index保存i
+    // for (var i = 0; i < lis.length; i++) {
+    //     lis[i].index = i
+    //     lis[i].onclick = function () {
+    //         alert(this.innerText)
+    //     }
+    // }
+
+    //    2，利用闭包的方式得到当前li的索引号
+    // for (var i = 0; i < lis.length; i++) {
+    //     //这样就可以利用for循环创建4个立即执行函数
+    //     (function (i) {
+    //         //立即执行函数也称为小闭包因为立即执行函数里面的任何一个函数都可以使用他的i这个变量
+    //         lis[i].onclick = function () {
+    //             alert(this.innerText)
+    //         }
+    //     })(i)
+    // }
+
+//    闭包应用- 3秒之后，打印所有的li元素内容
+    for (var i=0;i<lis.length;i++){
+        (function (i) {
+            setTimeout(function (){
+                console.log(lis[i].innerHTML)
+            },3000)
+        })(i)
+    }
+</script>
+</body>
+</html>

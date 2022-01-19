@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="zl">张磊是个大帅哥</p>
+<script>
+    document.getElementById('zl').onmouseover = function (e) {
+        let a = e.target;
+        // if (a.title) return;
+        a.title = a.innerText;
+        console.log(e)
+    }
+</script>
+</body>
+</html>

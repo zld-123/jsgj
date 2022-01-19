@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07_函数中this</title>
+</head>
+<body>
+<!--
+1，this是什么
+    * 任何函数本质上都是通过某个对象来调用，如果没有直接指定就是 window
+    * 所有的函数内部都有一个变量 this
+    * 它的值是调用函数的当前对象
+2，如何确定this的值
+    * test():指向 window
+    * p.test():指向 p
+    * new test():新创建的对象
+    * p.call(obj):obj
+-->
+<script>
+    function Person(color) {
+        console.log(this) //输出Person{}
+        this.color = color;
+        this.getColor = function () {
+            console.log(this)
+            return this.color
+        }
+        this.setColor = function (color) {
+            console.log(this)
+            this.color = color
+        }
+    }
+    new Person('red');//this是谁 指向 window
+    var p = new Person('yello')//this 是谁 指向 p
+    p.getColor();//this是谁 指向 p
+    var obj = {}
+    p.setColor.call(obj,'black')//this是谁 指向 obj  其中 call 会影响this指向问题
+    var test = p.setColor;
+    test()//this是谁 指向 window
+    function fun1() {
+        function fun2() {
+            console.log(this)
+        }
+        fun2();//this是谁 指向 window
+    }
+    fun1()
+</script>
+</body>
+</html>

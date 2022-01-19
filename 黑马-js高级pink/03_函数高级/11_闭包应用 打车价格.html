@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_闭包应用 打车价格</title>
+</head>
+<body>
+<script>
+    <!--    创建一个立即执行函数，获得用户打车价格-->
+    var car = (function () {
+        //    起步价
+        var start = 13
+        //    总价
+        var total = 0
+        return {
+            //    正常情况下的总价
+            price: function (n) {
+                if (n <= 3) {
+                    total = start
+                } else {
+                    total = start + (n - 3) * 5
+                }
+                return total
+            },
+            //拥堵之后的消费
+            yd:function (flag) {
+               return  flag ? total + 10 : total
+            }
+        }
+    })()
+    console.log(car.price(6))
+    console.log(car.yd(true))
+</script>
+</body>
+</html>

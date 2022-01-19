@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03_原型链</title>
+</head>
+<body>
+<!--
+1，原型链
+    * 访问一个对象的属性时
+        * 先在吱声属性中查找，找到返回
+        * 如果没有，在沿着__proto__这条链向上查找，找到返回
+        * 如果最终没有找到，返回undefined
+    * 别名：隐式原型链
+    * 作用：查找对象的属性（方法）
+-->
+<script>
+    function Fn() {
+        this.test1 = function () {
+            console.log('test1()')
+        }
+    }
+    Fn.prototype.test2 = function () {
+        console.log('test2()')
+    }
+    var fn = new Fn()
+    fn.test1()
+    fn.test2()
+    console.log(fn.toString())
+</script>
+</body>
+</html>

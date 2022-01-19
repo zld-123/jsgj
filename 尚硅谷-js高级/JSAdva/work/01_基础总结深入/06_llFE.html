@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06_llFE</title>
+</head>
+<body>
+<!--
+1，理解
+    * 全称Immediately-Invoked Function Expression
+    * 翻译过来就是立即调用函数表达式 别名：匿名函数自调用
+2，作用
+    * 隐藏实现
+    * 不会污染外部（全局）命名空间
+    * 用它来编码js模块
+-->
+<script>
+    (function () {//匿名函数自调用
+        console.log('.......')
+        var a = 3
+        console.log(a+3)
+    })()
+</script>
+</body>
+</html>

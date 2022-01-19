@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_探索instanceof</title>
+</head>
+<body>
+<!--
+1,instanceof是如何判断的
+    * 表达式：A instanceof B
+    * 如果B函数是显示原型对象在A对象的原型链上，返回true，否则返回FALSE
+2，Function是通过new自己产生的实例
+-->
+<script>
+    //案例一
+    function Foo() {
+
+    }
+    var f1 = new Foo()
+    console.log(f1 instanceof Foo)
+    console.log(f1 instanceof Object)
+//    案例二
+    console.log(Object instanceof Function)
+    console.log(Object instanceof Object)
+    console.log(Function instanceof Function)
+    console.log(Function instanceof Object)
+    function Foo1() {
+
+    }
+
+    console.log(Object instanceof Foo1)
+</script>
+</body>
+</html>
