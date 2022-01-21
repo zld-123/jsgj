@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_用户名验证</title>
+    <style>
+        span{
+            color: #aaa;
+            font-size: 14px;
+        }
+        .right{
+            color: green;
+        }
+        .wrong{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<input type="text" class="uname"> <span>请输入用户名</span>
+<script>
+    var reg = /^[A-z0-9_-]{6,16}$/
+//    获取元素
+    var uname = document.querySelector('.uname')
+    var spa = document.querySelector('span')
+    uname.onblur = function () {
+        if (reg.test(this.value)){
+            console.log('真确的')
+            spa.className = 'right'
+            spa.innerText = '用户名格式正确'
+        }else {
+            console.log('错误的')
+            spa.className = 'wrong'
+            spa.innerText = '用户名格式错误'
+        }
+    }
+</script>
+</body>
+</html>

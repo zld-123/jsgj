@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_特殊字符</title>
+</head>
+<body>
+<script>
+    <!--    1,边界符 ^(表示匹配行首的文本以谁开始) %(表示匹配行首的文本以谁结束)-->
+    var rg = /^123$///表示必须以123开头，以123结束
+    console.log(rg.test(123))//true
+    console.log(rg.test(1253))//false
+    console.log('-----------------------')
+    //2，字符类 [] 表示有一系列字符可供选中，只要匹配其中一个就可以
+    var re1 = /[abc]///表示只要包含 a b c 其中任何一个都会返回true
+    //如果这里加上边界符，则只能选一个 只有a 或 b 或 c
+    console.log(re1.test('andy'))//true
+    console.log(re1.test('baby'))//true
+    console.log(re1.test('color'))//true
+    console.log(re1.test('red'))//false
+    console.log('------------------------')
+    var reg = /[A-z]/ //表示返回26个字母（以大写字母和小写字母组合表示）任意一个都是true
+    //在[]里面写 ^ 就表示取反，在输入的时候不能包含 [] 内部的
+    console.log(reg.test('ajc'))
+    console.log(reg.test('fff'))
+    console.log(reg.test('cubc'))
+    console.log(reg.test('CUBE'))
+    console.log(reg.test('ccd'))
+</script>
+</body>
+</html>

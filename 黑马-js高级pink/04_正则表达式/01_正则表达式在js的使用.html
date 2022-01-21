@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_正则表达式在js的使用</title>
+</head>
+<body>
+<script>
+<!--  正则表达式在js中的使用-->
+//1，利用 RegExp 对象来创建，正则表达式
+var regexp = new RegExp(/1-9/)
+console.log(regexp)
+//2，利用字面量创建正则表单式
+var rg = /139/
+//test() 方法用来检测字符串是否符合正则表达式要求的规范
+console.log(rg.test('139'))
+</script>
+</body>
+</html>

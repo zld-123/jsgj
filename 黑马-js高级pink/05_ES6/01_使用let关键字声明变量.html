@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用let关键字声明变量</title>
+</head>
+<body>
+<script>
+    // let关键字就是用来声明变量的
+    <!-- 1，使用let关键字声明的变量具有块级作用域 而var是不具有这个特点的-->
+    //let 可以防止for循环变量变成全局变量
+
+    /* if (true){
+        let a = 10
+        console.log(a)
+    }
+    console.log(a)
+    if (true){
+        let num = 100
+        var abc = 200
+    }
+    console.log(abc)
+    console.log(num)*/
+
+//    防止循环变量变成全局变量，
+    /*for (let i=0;i<2;i++){
+
+    }
+    console.log(i)*/
+
+//    2，不会存在变量提升 在使用 var声明变量的时候会存在变量提升（是bug）
+//    而使用 let则不会出现这个问题
+//     console.log(a)//这里因为 var 会使变量提升所以不会报错，但是返回的是undefined
+//     var a = 10
+//     console.log(a)//let声明变量不会使变量提升所以会直接报错
+//     let a = 10
+
+//    3，let声明变量会出现暂存性死区
+//     var num = 10
+//     if (true){
+//         console.log(num)//使用let声明变量就会和块级作用域绑定，就算外面有同名变量，也会到外面查找
+//         let num = 20
+//     }
+
+//    面试题
+    let arr = []
+    for (let i=0;i<2;i++){
+        arr[i] = function () {
+            console.log(i)
+        }
+    }
+    arr[0]()
+    arr[1]()
+</script>
+</body>
+</html>

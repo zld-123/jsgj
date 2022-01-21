@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18_深拷贝和浅拷贝</title>
+</head>
+<body>
+<script>
+    <!--    深拷贝拷贝多层，每一级别的数据都会拷贝（当他拷贝复杂数据时，会将其在内存空间复制一份，这样就算修改了复制过来的内容对原数据也没影响）-->
+    var obj = {
+        id: 1,
+        name: 'andy',
+        msg: {
+            age: 18
+        },
+        color:['pink','red']
+    }
+    var o = {}
+
+    //    分装一个函数
+    function deepCopy(newobj, oldobj) {
+        for (var k in oldobj) {
+            //    判断属性值属于那种数据类型
+            //    1，获取属性值 oldobj[k]
+            var itme = oldobj[k]
+            //    2，判断这个值是否是数组
+            if (itme instanceof Array) {
+                newobj[k] = []
+                deepCopy(newobj[k], itme)
+            } else if (itme instanceof Object) {
+                //    3，判断这个值是否是对象
+                newobj[k] = {}
+                deepCopy(newobj[k], itme)
+            } else {
+                //    4，属于简单数据类型
+                newobj[k] = itme
+            }
+        }
+    }
+    deepCopy(o,obj)
+    console.log(o)
+    o.msg.age = 25
+    console.log(obj)
+</script>
+</body>
+</html>
